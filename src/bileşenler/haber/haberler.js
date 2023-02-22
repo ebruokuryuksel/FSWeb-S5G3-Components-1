@@ -115,3 +115,48 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+
+function haberYapici(haber){
+  const articleYap = document.createElement("div");
+  articleYap.classList.add("article");
+
+  const h2Yap = document.createElement("h2");
+  h2Yap.textContent = haber.baslik;
+  articleYap.append(h2Yap);
+
+  const pYap = document.createElement("p");
+  pYap.classList.add("tarih");
+  pYap.textContent = haber.tarih;
+  articleYap.append(pYap);
+
+  const prgrf1 = document.createElement("p");
+  prgrf1.textContent = haber.ilkParagraf;
+  articleYap.append(prgrf1);
+
+  const prgrf2 = document.createElement("p");
+  prgrf2.textContent = haber.ikinciParagraf;
+  articleYap.append(prgrf2);
+
+  const prgrf3 = document.createElement("p");
+  prgrf3.textContent = haber.ucuncuParagraf;
+  articleYap.append(prgrf3);
+
+  const expandButtonYap = document.createElement("span");
+  expandButtonYap.classList.add("expandButton");
+  expandButtonYap.textContent = "+";
+
+  
+  expandButtonYap.addEventListener("click",(e) =>{
+    articleYap.classList.toggle("article-open");
+  })
+  
+  articleYap.append(expandButtonYap);
+  return articleYap;
+  
+  }
+  
+  const haberler = document.querySelector(".articles");
+  
+  data.forEach((i) => {
+  haberler.append(haberYapici(i));
+  })
